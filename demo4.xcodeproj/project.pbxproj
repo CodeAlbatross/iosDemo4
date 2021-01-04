@@ -16,6 +16,8 @@
 		B19F68CF25A1F103005BBD7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F68CE25A1F103005BBD7D /* main.m */; };
 		B19F68D925A1F103005BBD7D /* demo4Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F68D825A1F103005BBD7D /* demo4Tests.m */; };
 		B19F68E425A1F103005BBD7D /* demo4UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F68E325A1F103005BBD7D /* demo4UITests.m */; };
+		B19F68F725A2E697005BBD7D /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F68F625A2E697005BBD7D /* Student.m */; };
+		B19F690025A2F210005BBD7D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19F68FF25A2F210005BBD7D /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		B19F68DF25A1F103005BBD7D /* demo4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demo4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19F68E325A1F103005BBD7D /* demo4UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demo4UITests.m; sourceTree = "<group>"; };
 		B19F68E525A1F103005BBD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B19F68F525A2E697005BBD7D /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		B19F68F625A2E697005BBD7D /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		B19F68FE25A2F210005BBD7D /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		B19F68FF25A2F210005BBD7D /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,9 @@
 				B19F68CA25A1F103005BBD7D /* LaunchScreen.storyboard */,
 				B19F68CD25A1F103005BBD7D /* Info.plist */,
 				B19F68CE25A1F103005BBD7D /* main.m */,
+				B19F68F425A2E64E005BBD7D /* model */,
+				B19F68FE25A2F210005BBD7D /* TableViewController.h */,
+				B19F68FF25A2F210005BBD7D /* TableViewController.m */,
 			);
 			path = demo4;
 			sourceTree = "<group>";
@@ -135,6 +144,15 @@
 				B19F68E525A1F103005BBD7D /* Info.plist */,
 			);
 			path = demo4UITests;
+			sourceTree = "<group>";
+		};
+		B19F68F425A2E64E005BBD7D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B19F68F525A2E697005BBD7D /* Student.h */,
+				B19F68F625A2E697005BBD7D /* Student.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B19F68C425A1F101005BBD7D /* ViewController.m in Sources */,
+				B19F690025A2F210005BBD7D /* TableViewController.m in Sources */,
 				B19F68BE25A1F101005BBD7D /* AppDelegate.m in Sources */,
+				B19F68F725A2E697005BBD7D /* Student.m in Sources */,
 				B19F68CF25A1F103005BBD7D /* main.m in Sources */,
 				B19F68C125A1F101005BBD7D /* SceneDelegate.m in Sources */,
 			);
