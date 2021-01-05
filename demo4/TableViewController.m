@@ -6,7 +6,7 @@
 //
 
 #import "TableViewController.h"
-#import "Student.h"
+#import "model/Student.h"
 #import "ViewController.h"
 
 @interface TableViewController ()
@@ -16,6 +16,13 @@
 @end
 
 @implementation TableViewController
+//下拉刷新
+- (IBAction)refreshData:(UIRefreshControl *)sender {
+    [self.refreshControl beginRefreshing];
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+    
+}
 
 - (void)writeToFile:(NSMutableArray *) sts filePath:(NSString *)path{
     NSDate *data;
@@ -54,6 +61,16 @@
             vc.path = self.path;
         }
     }
+    if ([segue.identifier isEqualToString:@"showdetail"]) {
+        if ([segue.destinationViewController isKindOfClass:[ViewController class]]) {
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            ViewController *vc = (ViewController *)segue.destinationViewController;
+            vc.students = self.students;
+            vc.indexPath = indexPath;
+            vc.path = self.path;
+        }
+    }
+    
 }
 
 -(void)didReceiveMemoryWarning{
@@ -72,12 +89,32 @@
     return [self.students count];
 }
 
+//把表单元显示出来
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"studentCell" forIndexPath:indexPath];
     self.student = self.students[indexPath.row];
     cell.textLabel.text = self.student.name;
     cell.detailTextLabel.text = self.student.number;
     return cell;
+}
+
+//滑动删除
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //如果处于删除状态，则删除表单以及数据库的内容
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.students removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self writeToFile:self.students filePath:self.path];
+    }
+}
+
+//修改
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"modifyview"];
+    vc.students = self.students;
+    vc.indexPath = indexPath;
+    vc.path = self.path;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

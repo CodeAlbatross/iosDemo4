@@ -7,7 +7,7 @@
 
 #import "ViewController.h"
 #import "TableViewController.h"
-#import "Student.h"
+#import "model/Student.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *TxtName;
@@ -45,6 +45,17 @@
     self.TxtName.text =nil;
     self.TxtNumber.text = nil;
     self.TxtScore.text = nil;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    if (self.indexPath != nil) {
+        Student *student = self.students[self.indexPath.row];
+        self.TxtName.text = student.name;
+        self.TxtNumber.text = student.number;
+        self.TxtAge.text = [NSString stringWithFormat:@"%ld",(long)student.age];
+        self.TxtScore.text = [NSString stringWithFormat:@"%f",student.score];
+        self.TxtMemo.text = student.memo;
+    }
 }
 
 - (void)viewDidLoad {
